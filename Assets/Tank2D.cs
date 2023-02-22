@@ -8,18 +8,14 @@ public class Tank2D : MonoBehaviour
 
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10;
+    public float bulletSpeed = 40;
     public float movement = 2;
-
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+        Shooting();
     }
 
     void Movement()
@@ -36,6 +32,10 @@ public class Tank2D : MonoBehaviour
 
     void Shooting()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+        }
     }
 }
