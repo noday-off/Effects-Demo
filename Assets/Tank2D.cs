@@ -36,6 +36,7 @@ public class Tank2D : MonoBehaviour
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+            gameObject.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
         }
     }
 }
